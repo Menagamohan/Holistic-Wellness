@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharmacy systems · compare + preparations</title>
+    <!-- Font & icons (Font Awesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f8fbfd;
+            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+            line-height: 1.5;
+            color: #1e2f3a;
+            padding: 2rem 1.2rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* header */
+        .header {
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.6rem;
+            font-weight: 500;
+            background: linear-gradient(130deg, #004d66, #1f7a8c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+        }
+
+        .header h1 i {
+            background: none;
+            -webkit-text-fill-color: initial;
+            color: #3f899e;
+            margin: 0 8px;
+        }
+
+        .header p {
+            color: #4a6e7a;
+            font-size: 1.2rem;
+            border-bottom: 2px solid #cde3e9;
+            display: inline-block;
+            padding-bottom: 0.3rem;
+        }
+
+        /* ----- DIFFERENCE SECTION (comparison grid) ----- */
+        .diff-title {
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin: 2.5rem 0 1.2rem 0;
+            color: #1d5a6e;
+            border-left: 8px solid #62b5c7;
+            padding-left: 1.2rem;
+        }
+
+        .diff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .diff-card {
+            background: white;
+            border-radius: 28px 12px 28px 12px;
+            box-shadow: 0 12px 26px -10px rgba(27, 78, 92, 0.2);
+            padding: 1.6rem 1.2rem 1.6rem 1.2rem;
+            border: 1px solid rgba(140, 190, 205, 0.3);
+            transition: all 0.2s;
+        }
+
+        .diff-card:hover {
+            transform: scale(1.01);
+            border-color: #86bfcf;
+        }
+
+        .diff-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 450;
+            margin-bottom: 1rem;
+            border-bottom: 2px dotted #bee0e9;
+            padding-bottom: 0.5rem;
+        }
+
+        .diff-card ul {
+            list-style: none;
+        }
+
+        .diff-card li {
+            margin-bottom: 0.6rem;
+            font-size: 0.98rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .diff-card li i {
+            width: 1.4rem;
+            color: #2f879e;
+            font-size: 0.95rem;
+            margin-top: 0.15rem;
+        }
+
+        .tag {
+            background: #e2f0f5;
+            border-radius: 40px;
+            padding: 0.15rem 0.9rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #135f72;
+            text-transform: uppercase;
+            margin-left: 0.4rem;
+            white-space: nowrap;
+        }
+
+        /* ----- PREPARATIONS (detailed lists, new card look) ----- */
+        .systems-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 2rem 1.8rem;
+            margin-top: 1rem;
+        }
+
+        .prep-card {
+            background: #fffffffa;
+            border-radius: 1.5rem 0.5rem 1.5rem 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 10px 20px -8px #244b5840;
+            transition: 0.15s ease;
+            border: 1px solid #d2e7ef;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .prep-card:hover {
+            box-shadow: 0 18px 30px -8px #26627766;
+        }
+
+        .prep-header {
+            padding: 1rem 1.5rem 0.2rem 1.5rem;
+            font-size: 2rem;
+            font-weight: 470;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(240, 248, 250, 0.7);
+            border-bottom: 2px solid;
+        }
+
+        /* distinct header colors */
+        .prep-card.homo .prep-header { background: #ddecf5; border-bottom-color: #487c8f; }
+        .prep-card.ayur .prep-header { background: #deedd9; border-bottom-color: #5e9068; }
+        .prep-card.yoga .prep-header { background: #ffe9d4; border-bottom-color: #c6895f; }
+        .prep-card.unani .prep-header { background: #fbe1db; border-bottom-color: #bb7e75; }
+        .prep-card.siddha .prep-header { background: #eedaee; border-bottom-color: #9b6f9b; }
+
+        .prep-body {
+            padding: 1.5rem 1.5rem 2rem 1.5rem;
+            flex: 1;
+            background: white;
+        }
+
+        .prep-list {
+            list-style: none;
+        }
+
+        .prep-list li {
+            padding: 0.45rem 0 0.45rem 1.8rem;
+            position: relative;
+            border-bottom: 1px solid #e1f0f5;
+            font-size: 1rem;
+            color: #194351;
+        }
+
+        .prep-list li:last-child {
+            border-bottom: none;
+        }
+
+        .prep-list li i {
+            position: absolute;
+            left: 0;
+            top: 0.6rem;
+            color: #5096ab;
+            width: 1.4rem;
+            text-align: center;
+        }
+
+        .badge-light {
+            background: #e1eff4;
+            border-radius: 30px;
+            padding: 0.2rem 0.8rem;
+            font-size: 0.7rem;
+            margin-left: 0.4rem;
+            color: #1a606f;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        /* two columns for long ayurveda list */
+        .list-col2 {
+            column-count: 2;
+            column-gap: 1rem;
+        }
+
+        @media (max-width: 600px) {
+            .list-col2 {
+                column-count: 1;
+            }
+        }
+
+        .footer-note {
+            margin-top: 4rem;
+            text-align: center;
+            color: #59838f;
+            border-top: 2px solid #cce2ea;
+            padding-top: 1.8rem;
+            font-size: 0.9rem;
+        }
+
+        .footer-note i {
+            margin: 0 5px;
+            color: #407482;
+        }
+
+        hr.diff-hr {
+            border: none;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #b0d6e3, transparent);
+            margin: 2rem 0;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1><i class="fas fa-seedling"></i> five paths of pharmacy <i class="fas fa-mortar-pestle"></i></h1>
+        <p>systems · preparations · key differences</p>
+    </div>
+
+    <!-- DIFFERENCE SECTION : at a glance comparison -->
+    <div class="diff-title">
+        <i class="fas fa-not-equal"></i> differences at a glance
+    </div>
+    <div class="diff-grid">
+        <!-- Homoeopathy diff -->
+        <div class="diff-card">
+            <h3><i class="fas fa-flask" style="color:#40748e;"></i> Homoeopathy</h3>
+            <ul>
+                <li><i class="fas fa-globe"></i> <strong>Origin:</strong> Germany (18th c.)</li>
+                <li><i class="fas fa-droplet"></i> <strong>Core forms:</strong> Mother tincture, dilutions (6C‑200C), triturations</li>
+                <li><i class="fas fa-bolt"></i> <strong>Unique:</strong> Potentisation, globules, minimum dose</li>
+                <li><i class="fas fa-ban"></i> <em>No raw herb use</em> <span class="tag">ultra‑dilute</span></li>
+            </ul>
+        </div>
+        <!-- Ayurveda diff -->
+        <div class="diff-card">
+            <h3><i class="fas fa-leaf" style="color:#47855a;"></i> Ayurveda</h3>
+            <ul>
+                <li><i class="fas fa-globe"></i> <strong>Origin:</strong> India (3000+ years)</li>
+                <li><i class="fas fa-cubes"></i> <strong>Core forms:</strong> Churna, vati, kashaya, asava/arishta, ghrita, taila, bhasma</li>
+                <li><i class="fas fa-gem"></i> <strong>Unique:</strong> Bhasma (calcined metals), guggulu, lehyam</li>
+                <li><i class="fas fa-balance-scale"></i> <em>Dosha‑based</em> <span class="tag">holistic</span></li>
+            </ul>
+        </div>
+        <!-- Yoga & Naturopathy diff -->
+        <div class="diff-card">
+            <h3><i class="fas fa-spa" style="color:#c47a47;"></i> Yoga & Naturopathy</h3>
+            <ul>
+                <li><i class="fas fa-globe"></i> <strong>Origin:</strong> Global / India (yoga)</li>
+                <li><i class="fas fa-cubes"></i> <strong>Core forms:</strong> Herbal medicine, supplements, mud therapy</li>
+                <li><i class="fas fa-needle"></i> <strong>Unique:</strong> Acupuncture needles, yoga mat, natural mud</li>
+                <li><i class="fas fa-wind"></i> <em>Non‑invasive & lifestyle</em> <span class="tag">drugless</span></li>
+            </ul>
+        </div>
+        <!-- Unani diff -->
+        <div class="diff-card">
+            <h3><i class="fas fa-mosque" style="color:#b06356;"></i> Unani</h3>
+            <ul>
+                <li><i class="fas fa-globe"></i> <strong>Origin:</strong> Greece / Persia (Greco‑Arab)</li>
+                <li><i class="fas fa-cubes"></i> <strong>Core forms:</strong> Safoof, habb/qurs, sharbat, arq, majoon, jawarish, khamira</li>
+                <li><i class="fas fa-jar"></i> <strong>Unique:</strong> Semi‑solid pastes (majoon, jawarish), khamira, laooq</li>
+                <li><i class="fas fa-thermometer-half"></i> <em>Humoural theory</em> <span class="tag">temperament</span></li>
+            </ul>
+        </div>
+        <!-- Siddha diff -->
+        <div class="diff-card">
+            <h3><i class="fas fa-hand-sparkles" style="color:#8f5e8f;"></i> Siddha</h3>
+            <ul>
+                <li><i class="fas fa-globe"></i> <strong>Origin:</strong> South India (Tamil)</li>
+                <li><i class="fas fa-cubes"></i> <strong>Core forms:</strong> Chooranam, kudineer, mathirai, parpam, chenduram, mezhugu</li>
+                <li><i class="fas fa-fire"></i> <strong>Unique:</strong> Parpam (calx), chenduram (red oxide), mezhugu (wax form)</li>
+                <li><i class="fas fa-moon"></i> <em>Alchemy & muppu</em> <span class="tag">metal‑based</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <hr class="diff-hr">
+
+    <!-- detailed preparations (content as user provided) -->
+    <div class="diff-title" style="border-left-color: #c29f6b;">
+        <i class="fas fa-list-ul"></i> complete preparations inventory
+    </div>
+
+    <div class="systems-showcase">
+        <!-- 1. Homoeopathy -->
+        <div class="prep-card homo">
+            <div class="prep-header">
+                <i class="fas fa-flask"></i> Homoeopathy
+            </div>
+            <div class="prep-body">
+                <ul class="prep-list">
+                    <li><i class="fas fa-tint"></i> Mother Tincture (Q)</li>
+                    <li><i class="fas fa-chart-line"></i> Dilutions <span class="badge-light">6C, 30C, 200C…</span></li>
+                    <li><i class="fas fa-tablets"></i> Tablets / Globules</li>
+                    <li><i class="fas fa-mortar-pestle"></i> Triturations</li>
+                    <li><i class="fas fa-cream"></i> Ointments / Drops</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 2. Ayurveda (double column) -->
+        <div class="prep-card ayur">
+            <div class="prep-header">
+                <i class="fas fa-leaf"></i> Ayurveda
+            </div>
+            <div class="prep-body">
+                <ul class="prep-list list-col2">
+                    <li><i class="fas fa-leaf"></i> Churna – powders</li>
+                    <li><i class="fas fa-capsules"></i> Vati / Gutika – tablets/pills</li>
+                    <li><i class="fas fa-mug-hot"></i> Kashaya / Kwath – decoctions</li>
+                    <li><i class="fas fa-wine-bottle"></i> Asava & Arishta – fermented</li>
+                    <li><i class="fas fa-jam"></i> Avaleha / Lehyam – herbal jams/pastes</li>
+                    <li><i class="fas fa-oil-can"></i> Ghrita – medicated ghee</li>
+                    <li><i class="fas fa-oil-can"></i> Taila – medicated oils</li>
+                    <li><i class="fas fa-mountain"></i> Bhasma – calcined minerals/metals</li>
+                    <li><i class="fas fa-recycle"></i> Rasayana – rejuvenation</li>
+                    <li><i class="fas fa-wind"></i> Arka – herbal distillates</li>
+                    <li><i class="fas fa-paint-brush"></i> Lepa – external paste</li>
+                    <li><i class="fas fa-tree"></i> Guggulu – resin preparations</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 3. Yoga & Naturopathy -->
+        <div class="prep-card yoga">
+            <div class="prep-header">
+                <i class="fas fa-spa"></i> Yoga & Naturopathy
+            </div>
+            <div class="prep-body">
+                <ul class="prep-list">
+                    <li><i class="fas fa-leaf"></i> Herbal Medicine – plant-based</li>
+                    <li><i class="fas fa-pills"></i> Natural Supplements – vitamins, minerals</li>
+                    <li><i class="fas fa-mud"></i> Mud – natural mud treatment</li>
+                    <li><i class="fas fa-syringe"></i> Acupuncture Needles – point stimulation</li>
+                    <li><i class="fas fa-map"></i> Yoga Mat – practice mat</li>
+                </ul>
+                <p style="font-size:0.8rem; margin-top:0.3rem; color:#91755c;"><i class="fas fa-info-circle"></i> includes therapeutic aids</p>
+            </div>
+        </div>
+
+        <!-- 4. Unani -->
+        <div class="prep-card unani">
+            <div class="prep-header">
+                <i class="fas fa-mosque"></i> Unani
+            </div>
+            <div class="prep-body">
+                <ul class="prep-list">
+                    <li><i class="fas fa-mortar-pestle"></i> Safoof – powder</li>
+                    <li><i class="fas fa-capsules"></i> Habb / Qurs – tablet/pill</li>
+                    <li><i class="fas fa-wine-bottle"></i> Sharbat – syrup</li>
+                    <li><i class="fas fa-water"></i> Arq – distillate</li>
+                    <li><i class="fas fa-paste"></i> Majoon – semi-solid paste</li>
+                    <li><i class="fas fa-utensils"></i> Jawarish – digestive paste</li>
+                    <li><i class="fas fa-jar"></i> Khamira – electuary</li>
+                    <li><i class="fas fa-oil-can"></i> Roghan – medicated oil</li>
+                    <li><i class="fas fa-band-aid"></i> Marham – ointment</li>
+                    <li><i class="fas fa-syrup"></i> Laooq – linctus / thick syrup</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 5. Siddha -->
+        <div class="prep-card siddha">
+            <div class="prep-header">
+                <i class="fas fa-hand-sparkles"></i> Siddha
+            </div>
+            <div class="prep-body">
+                <ul class="prep-list">
+                    <li><i class="fas fa-mortar-pestle"></i> Chooranam – powder</li>
+                    <li><i class="fas fa-mug-hot"></i> Kudineer – herbal decoction</li>
+                    <li><i class="fas fa-tint"></i> Kashayam – herbal extract</li>
+                    <li><i class="fas fa-capsules"></i> Mathirai – tablet/pill</li>
+                    <li><i class="fas fa-burn"></i> Parpam – calx preparation</li>
+                    <li><i class="fas fa-fire"></i> Chenduram – red oxide medicine</li>
+                    <li><i class="fas fa-cube"></i> Mezhugu – wax form medicine</li>
+                    <li><i class="fas fa-jam"></i> Legiyam / Ilagam – herbal paste/electuary</li>
+                    <li><i class="fas fa-oil-can"></i> Thailam – medicated oil</li>
+                    <li><i class="fas fa-flask"></i> Kuzhambu – medicated liquid prep</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- recap footer with all content exactly as listed -->
+    <div class="footer-note">
+        <p><i class="fas fa-circle"></i> <strong>Homoeopathy</strong> : mother tincture (Q), dilutions, tablets/globules, triturations, ointments/drops</p>
+        <p><i class="fas fa-circle"></i> <strong>Ayurveda</strong> : churna, vati/gutika, kashaya/kwath, asava/arishta, avaleha/lehyam, ghrita, taila, bhasma, rasayana, arka, lepa, guggulu</p>
+        <p><i class="fas fa-circle"></i> <strong>Yoga & Naturopathy</strong> : herbal medicine, natural supplements, mud, acupuncture needles, yoga mat</p>
+        <p><i class="fas fa-circle"></i> <strong>Unani</strong> : safoof, habb/qurs, sharbat, arq, majoon, jawarish, khamira, roghan, marham, laooq</p>
+        <p><i class="fas fa-circle"></i> <strong>Siddha</strong> : chooranam, kudineer, kashayam, mathirai, parpam, chenduram, mezhugu, legiyam/ilagam, thailam, kuzhambu</p>
+        <p style="margin-top: 1.2rem; opacity:0.7;">⚕️ five systems — one compendium • design with comparison ⚕️</p>
+    </div>
+</div>
+</body>
+</html>

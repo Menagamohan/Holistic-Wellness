@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+
+<head>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="robots" content="max-image-preview:large">
+    <!-- Page Title -->
+    <title>ChiroHeal - Chiropractor & Physiotherapy Wellness Center</title>
+    <!-- Favicon Icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
+    <!-- Google Fonts Css-->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&amp;display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
+    <!-- Bootstrap Css -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <!-- SlickNav Css -->
+    <link href="css/slicknav.min.css" rel="stylesheet">
+    <!-- Swiper Css -->
+    <link rel="stylesheet" href="css/swiper-bundle.min.css">
+    <!-- Font Awesome Icon Css-->
+    <link href="css/all.css" rel="stylesheet" media="screen">
+    <!-- Animated Css -->
+    <link href="css/animate.css" rel="stylesheet">
+    <!-- Magnific Popup Core Css File -->
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <!-- Audio Css File -->
+    <link rel="stylesheet" href="css/plyr.css">
+    <!-- Main Custom Css -->
+    <link href="css/custom.css" rel="stylesheet" media="screen">
+
+    <link href="css/logo.css" rel="stylesheet" media="screen">
+
+
+    <style>
+        .gallery-title {
+            text-align: center;
+            padding: 40px 0 20px;
+            font-size: 2rem;
+            font-weight: 500;
+            color: #2c3e50;
+            border-bottom: 2px solid #cbd5e0;
+            margin-bottom: 20px;
+        }
+        /* responsive grid – from second gallery */
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            padding-bottom: 30px;
+        }
+        /* card item with overlay */
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 14px;
+            box-shadow: 0 10px 18px -8px rgba(0, 0, 0, 0.2);
+            transition: 0.25s ease;
+            aspect-ratio: 4 / 3;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 28px -8px rgba(0, 30, 50, 0.4);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+        /* overlay (from second gallery) */
+        
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 20, 30, 0.65);
+            backdrop-filter: blur(3px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 14px;
+        }
+        
+        .gallery-item:hover .overlay {
+            opacity: 1;
+        }
+        /* zoom button / magnifier */
+        
+        .zoom {
+            color: white;
+            font-size: 2.8rem;
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.2);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            transition: 0.2s;
+            font-weight: 300;
+            transform: scale(0.9);
+        }
+        
+        .zoom:hover {
+            background: rgba(255, 255, 255, 0.35);
+            border-color: white;
+            transform: scale(1);
+        }
+        /* === LIGHTBOX (inspired by first gallery, enhanced) === */
+        
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            backdrop-filter: blur(6px);
+        }
+        
+        .lightbox img {
+            max-width: 90vw;
+            max-height: 85vh;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            object-fit: contain;
+        }
+        
+        .close {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            font-size: 48px;
+            color: white;
+            cursor: pointer;
+            font-weight: 300;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(20, 20, 30, 0.6);
+            border-radius: 50%;
+            transition: 0.2s;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            line-height: 1;
+        }
+        
+        .close:hover {
+            background: #c0392b;
+            transform: scale(1.1);
+            border-color: white;
+        }
+        /* subtle footer */
+        
+        .footer-note {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px 0;
+            color: #5f6f7f;
+            border-top: 1px dashed #bdc9d5;
+            font-size: 0.9rem;
+        }
+        /* responsive */
+        
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            .gallery-title {
+                font-size: 1.6rem;
+            }
+            .close {
+                top: 20px;
+                right: 20px;
+                font-size: 40px;
+                width: 50px;
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header New Start -->
+    <header id="sisf-page-header" class="sisf-main-header sisf--header sisf-standerd-header">
+        <div class="header-top sisf-skin--light">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 p-0">
+                        <div class="header_col">
+                            <div class="sisf-widget-holder sisf--left">
+                                <div id="sis_core_icon_list_item-3" class="widget widget_sis_core_icon_list_item sisf-top-bar-widget">
+                                    <!-- Logo Start -->
+
+                                    <!-- Logo Start -->
+                                    <a class="logo" href="index.html">
+                                        <img src="images/logo/logo-01.png" alt="Logo">
+
+                                        <span class="logo-title">
+      <span class="main-title">Holistic Wellness</span><br>
+                                        <span class="sub-title">Caare Centre, Puducherry</span>
+                                        </span>
+                                    </a>
+                                    <!-- Logo End -->
+                                    <!-- Logo Start -->
+                                    <!-- <a class="navbar-brand mobile-block" href="index.html">
+               <img src="images/logo/logo-01.jpeg" alt="Logo">
+               </a> -->
+                                    <!-- Logo End -->
+                                </div>
+                            </div>
+
+
+                            <div class="header-center-icons">
+                                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                            </div>
+
+
+                            <div class="mail-us me-1">
+                                <a href="0413-2255445 📱 99448 75445"><span class="sisf-e-title-text"><img src="images/home-mail-icon.png" alt="ChiroHeal"> Call us: 0413-2255445
+📱 99448 75445</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="sisf-page-header-inner" class="sisf-skin--light align-items-center d-flex justify-content-center position-relative">
+            <!-- Logo Start -->
+            <a class="navbar-brand mobile-block" href="index.html">
+                <img src="images/logo/logo-01.png" style="width: 100px; height: 90px;" alt="Logo">
+            </a>
+            <div class="sisf-divided-header-right-wrapper justify-content-end d-flex align-items-center">
+                <nav class="navbar navbar-expand-lg me-5">
+
+
+                    <!-- Main Menu Start -->
+                    <div class="collapse navbar-collapse main-menu">
+                        <div class="nav-menu-wrapper">
+                            <ul class="navbar-nav ms-auto" id="menu">
+
+                                <!-- 1. About -->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="about-us.html">About</a>
+                                    <ul class="sub-menu">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#">CEO Message</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#">What Is Integrative Medicine &amp; Therapies</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#">About Us</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#">Our Team</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#">Additional Facilities &amp; Services</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <!-- 2. Integrated Spine Care -->
+                                <li class="nav-item submenu">
+                                    <a class="nav-link" href="integrated-spine-care.html">
+      Integrated Spine Care
+      <i class="fas fa-chevron-down custom-toggle-icon px-2"></i>
+    </a>
+                                    <ul class="sub-menu">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="index.html">Homoeopathy Medicine</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="advanced-acupuncture-treatment.html">Advanced Acupuncture Treatment</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="advanced-ozone-therapy-treatment.html">Advanced Ozone Therapy Treatment</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="advanced-4-nutrition-therapy.html">Advanced IV Nutrition Therapy</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="advanced-varma-therapy-treatment.html">Advanced Varma Therapy Treatment</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="chiropractic.html">Chiropractic &amp; Manual Therapy</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="advanced-robotic-spinal.html">Advanced Robotic Spinal &amp; Knee Decompression Therapy</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="advanced-cupping-therapy.html">Advanced Cupping Therapy</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#">Yoga Therapy</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="chiropractic-care.html">Chiropractic Care</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="spine-rehabilitation.html">Spine Rehabilitation</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <!-- 3. We Also Treat -->
+                                <li class="nav-item submenu">
+                                    <a class="nav-link" href="#">
+      We Also Treat
+      <i class="fas fa-chevron-down custom-toggle-icon px-2"></i>
+    </a>
+                                    <ul class="sub-menu">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="neurodegenerative-diseases.html">Neurodegenerative Diseases</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="autoimmune-diseases.html">Autoimmune Diseases</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="gastrointestinal-diseases.html">Gastrointestinal Diseases</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="skin-diseases.html">Skin Diseases</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="reproductive-disorders.html">Reproductive Disorders</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="hormonal-imbalances.html">Hormonal Imbalances</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <!-- 4. Integrative Medicine & Therapies -->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="integrative-medicine.html">
+      Integrative Medicine & Therapies
+    </a>
+
+
+
+
+
+
+                                    <ul class="sub-menu">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="our-services.html">Homoeopathy</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="naturopathy.html">Naturopathy</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="acupuncture.html">Acupuncture</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="Ozone-therapy.html">Ozone Therapy</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="n">IV Nutrition Therapy</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="functional-medicine.html">Functional Medicine</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="varama-therapy.html">Varma Therapy</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="chiropractic-manual-therapy.html">Chiropractic &amp; Manual Therapy</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="robotic-spinal-decompression-therapy.html">Robotic Spinal &amp; Knee Decompression Therapy</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="Hydrotherapy.html">Hydrotherapy</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="massage-therapy.html">Massage Therapy</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="cupping-therapy.html">Cupping Therapy</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="yoga-therapy.html">Yoga Therapy</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="ph">Physiotherapy</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <!-- 5. Wellness Diagnostics -->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="wellness-diagnostics.html">Wellness Diagnostics</a>
+
+                                    <ul class="sub-menu">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="iris-diagnosis.html">Iris Diagnosis</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="pulse-diagnosis.html">Pulse Diagnosis</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <!-- 6. Institute -->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="institute.html">Institute</a>
+                                    <ul class="sub-menu">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#">N.K. Lakshiya Institute of Health Sciences</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <!-- 7. Laboratory & Pharmacy -->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="laboratory-pharmacy.html">
+      Laboratory & Pharmacy
+    </a>
+
+                                    <ul class="sub-menu">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="kaushik-clinical-laboratory.html">N.K. Kaushik Clinical Laboratory</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="pharmacy-name.html">Sri Sugam Homoeopathy Pharmacy</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <!-- 8. Testimonials -->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="testimonials.html">Testimonials</a>
+                                </li>
+
+                                <!-- 9. Gallery -->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Gallery</a>
+                                </li>
+
+                                <!-- 10. Contact Us -->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="contact.html">Contact Us</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Main Menu End -->
+                </nav>
+
+            </div>
+            <div class="navbar-toggle"></div>
+            <div class="responsive-menu"></div>
+        </div>
+    </header>
+    <!-- Header New End -->
+    <!-- Banner Section Start -->
+    <div class="sisf-banner position-relative">
+        <div class="banner-img">
+            <figure>
+                <img src="images/services_banner.png" alt="ChiroHeal">
+            </figure>
+        </div>
+        <div class="sisf-page-title sisf-m sisf-title--standard sisf-alignment--center">
+            <div class="sisf-m-inner">
+                <div class="sisf-m-content sisf-content-grid ">
+                    <h1 class="sisf-m-title entry-title">Advanced Robotic Spinal & Knee Decompression Therapy
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Banner Section End -->
+
+
+    <div class="container">
+        <h1>📸 combined gallery · two in one</h1>
+
+        <!-- ========== CATEGORY 2023 ========== -->
+        <h2 class="gallery-title">✨ 2023 Events</h2>
+        <div class="gallery-grid">
+            <!-- picsum IDs: 1015,1016,1018,1020,1024,1027 (first gallery mix) -->
+            <div class="gallery-item">
+                <img src="https://picsum.photos/id/1015/600/400" alt="mountain landscape" loading="lazy">
+                <div class="overlay"><a href="https://picsum.photos/id/1015/1200/800" class="zoom">🔍</a></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://picsum.photos/id/1016/600/400" alt="mountain lake" loading="lazy">
+                <div class="overlay"><a href="https://picsum.photos/id/1016/1200/800" class="zoom">🔍</a></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://picsum.photos/id/1018/600/400" alt="valley" loading="lazy">
+                <div class="overlay"><a href="https://picsum.photos/id/1018/1200/800" class="zoom">🔍</a></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://picsum.photos/id/1020/600/400" alt="yosemite" loading="lazy">
+                <div class="overlay"><a href="https://picsum.photos/id/1020/1200/800" class="zoom">🔍</a></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://picsum.photos/id/1024/600/400" alt="bird" loading="lazy">
+                <div class="overlay"><a href="https://picsum.photos/id/1024/1200/800" class="zoom">🔍</a></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://picsum.photos/id/1027/600/400" alt="mountains" loading="lazy">
+                <div class="overlay"><a href="https://picsum.photos/id/1027/1200/800" class="zoom">🔍</a></div>
+            </div>
+        </div>
+
+        <!-- ========== CATEGORY 2022 ========== -->
+        <h2 class="gallery-title">🌟 2022 Events</h2>
+        <div class="gallery-grid">
+            <!-- picsum IDs: 1035,1040,1043,1044,1047,1050 (mix of both galleries) -->
+            <div class="gallery-item">
+                <img src="https://picsum.photos/id/1035/600/400" alt="black and white" loading="lazy">
+                <div class="overlay"><a href="https://picsum.photos/id/1035/1200/800" class="zoom">🔍</a></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://picsum.photos/id/1040/600/400" alt="fog" loading="lazy">
+                <div class="overlay"><a href="https://picsum.photos/id/1040/1200/800" class="zoom">🔍</a></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://picsum.photos/id/1043/600/400" alt="waterfall" loading="lazy">
+                <div class="overlay"><a href="https://picsum.photos/id/1043/1200/800" class="zoom">🔍</a></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://picsum.photos/id/1044/600/400" alt="wildlife" loading="lazy">
+                <div class="overlay"><a href="https://picsum.photos/id/1044/1200/800" class="zoom">🔍</a></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://picsum.photos/id/1047/600/400" alt="sea" loading="lazy">
+                <div class="overlay"><a href="https://picsum.photos/id/1047/1200/800" class="zoom">🔍</a></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://picsum.photos/id/1050/600/400" alt="desert" loading="lazy">
+                <div class="overlay"><a href="https://picsum.photos/id/1050/1200/800" class="zoom">🔍</a></div>
+            </div>
+        </div>
+
+        <!-- ========== CATEGORY 2021 ========== -->
+        <h2 class="gallery-title">🌿 2021 Events</h2>
+        <div class="gallery-grid">
+            <!-- picsum IDs: 1051,1052,1053,1054,1055,1056 (remaining images) -->
+            <div class="gallery-item">
+                <img src="https://picsum.photos/id/1051/600/400" alt="clouds" loading="lazy">
+                <div class="overlay"><a href="https://picsum.photos/id/1051/1200/800" class="zoom">🔍</a></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://picsum.photos/id/1052/600/400" alt="beach" loading="lazy">
+                <div class="overlay"><a href="https://picsum.photos/id/1052/1200/800" class="zoom">🔍</a></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://picsum.photos/id/1053/600/400" alt="mountains" loading="lazy">
+                <div class="overlay"><a href="https://picsum.photos/id/1053/1200/800" class="zoom">🔍</a></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://picsum.photos/id/1054/600/400" alt="leaf" loading="lazy">
+                <div class="overlay"><a href="https://picsum.photos/id/1054/1200/800" class="zoom">🔍</a></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://picsum.photos/id/1055/600/400" alt="forest" loading="lazy">
+                <div class="overlay"><a href="https://picsum.photos/id/1055/1200/800" class="zoom">🔍</a></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://picsum.photos/id/1056/600/400" alt="city" loading="lazy">
+                <div class="overlay"><a href="https://picsum.photos/id/1056/1200/800" class="zoom">🔍</a></div>
+            </div>
+        </div>
+
+    </div>
+    <!-- Services Section End -->
+    <!-- Footer Start -->
+    <footer class="main-footer">
+        <div id="sisf-page-footer-top-area-inner" class="footer-top-area-inner sisf-content-full-width">
+            <div class="container">
+                <div class="row  gallery-items page-gallery-box">
+                    <!-- Footer Gallery Start -->
+                    <div class="gallery-container">
+                        <div class="gallery-item single-center">
+                            <div class="wow fadeInUp">
+                                <a href="images/ft-gallery-1.png">
+                                    <figure>
+                                        <img src="images/ft-gallery-1.png" alt="ChiroHeal">
+                                    </figure>
+                                </a>
+                            </div>
+                        </div>
+                        <div class=" gallery-item single-center">
+                            <div class="wow fadeInUp mb-1">
+                                <a href="images/ft-gallery-2.png">
+                                    <figure>
+                                        <img src="images/ft-gallery-2.png" alt="ChiroHeal">
+                                    </figure>
+                                </a>
+                            </div>
+                        </div>
+                        <div class=" gallery-item single-center">
+                            <div class="wow fadeInUp mb-1">
+                                <a href="images/ft-gallery-3.png">
+                                    <figure>
+                                        <img src="images/ft-gallery-3.png" alt="ChiroHeal">
+                                    </figure>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="gallery-item single-center">
+                            <div class="wow fadeInUp">
+                                <a href="images/ft-gallery-4.png">
+                                    <figure>
+                                        <img src="images/ft-gallery-4.png" alt="ChiroHeal">
+                                    </figure>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="gallery-item single-center">
+                            <div class="wow fadeInUp">
+                                <a href="images/ft-gallery-5.png">
+                                    <figure>
+                                        <img src="images/ft-gallery-5.png" alt="ChiroHeal">
+                                    </figure>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Footer Gallery End -->
+                    <!-- Footer Subscribe Start -->
+
+                    <!-- Footer Subscribe End -->
+                </div>
+            </div>
+        </div>
+        <div class="sisf-page-footer-middle-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-12">
+                        <div class="footer-logo">
+                            <a class="logo" href="index.html">
+                                <img src="images/logo/logo-01.png" alt="Logo">
+
+                                <span class="logo-title">
+      <span class="main-title">Holistic Wellness</span><br>
+                                <span class="sub-titles">Caare Centre, Puducherry</span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="text">
+                            <p>Welcome to Chiro Heal, where your health and wellness come first. Our expert chiropractors are dedicated to providing personalized care.</p>
+                        </div>
+                        <!-- Footer Social Link Start -->
+                        <div class="footer-social-links">
+                            <ul>
+                                <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                                <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
+                            </ul>
+                        </div>
+                        <!-- Footer Social Link End -->
+                    </div>
+                    <div class="col-lg-3 col-12">
+                        <!-- Links Start -->
+                        <div class="footer-links">
+                            <h3>Useful Links</h3>
+                            <ul>
+                                <li><a href="shop.html">About</a></li>
+                                <li><a href="my-account.html">Integrated spine Care</a></li>
+                                <li><a href="cart.html">We Also Treat</a></li>
+                                <li><a href="checkout.html">Integrative Medicine & Therapies</a></li>
+                                <li><a href="wishlist.html">Wellness Diagnostics</a></li>
+                            </ul>
+                        </div>
+                        <!-- Links End -->
+                    </div>
+                    <div class="col-lg-2 col-12">
+                        <!-- Links Start -->
+                        <div class="footer-links">
+                            <!-- <h3>Links</h3> -->
+                            <ul>
+                                <li><a href="index.html">Institute</a></li>
+                                <li><a href="blogs.html">Laboratory & Pharmacy</a></li>
+                                <li><a href="our-services.html">Testimonials</a></li>
+                                <li><a href="lessons.html">Gallery</a></li>
+                                <li><a href="contact.html">Contact Us</a></li>
+                            </ul>
+                        </div>
+                        <!-- Links End -->
+                    </div>
+                    <div class="col-lg-3 col-12">
+                        <!-- Footer Contact Details Start -->
+                        <div class="footer-contact">
+                            <h3>Contact</h3>
+                            <div class="footer-contact-details">
+                                <!-- Footer Info Box Start -->
+                                <div class="footer-info-box">
+                                    <p>No. 13, Tamilselvi Street, Behind Jayaram Hotel, Kamaraj Nagar, Puducherry, India – 605011
+                                    </p>
+                                </div>
+                                <!-- Footer Info Box End -->
+                            </div>
+                            <p class="mt-3 mb-3">0413-2255445 📱 99448 75445 </p>
+                            <!-- <p class="mb-0">info@chiroheal.com</p> -->
+                        </div>
+                        <!-- Footer Contact Details End -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sisf-page-footer-bottom-area">
+            <div class="container">
+                <!-- Footer Copyright Section Start -->
+                <div class="footer-copyright">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6 col-md-6">
+                            <!-- Footer Copyright Start -->
+                            <div class="footer-copyright-text">
+                                <p>&copy; getit media. All Rights Reserved.</p>
+                            </div>
+                            <!-- Footer Copyright End -->
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <!-- Footer Privacy Link Start -->
+                            <div class="footer-privacy-policy">
+                                <ul>
+                                    <li><a href="#">Privacy Policy</a></li>
+                                </ul>
+                            </div>
+                            <!-- Footer Privacy Link End -->
+                        </div>
+                    </div>
+                </div>
+                <!-- Footer Copyright Section End -->
+            </div>
+        </div>
+    </footer>
+    <!-- Footer End -->
+    <!-- Jquery Library File -->
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <!-- Bootstrap js file -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Validator js file -->
+    <script src="js/validator.min.js"></script>
+    <!-- SlickNav js file -->
+    <script src="js/jquery.slicknav.js"></script>
+    <!-- Swiper js file -->
+    <script src="js/swiper-bundle.min.js"></script>
+    <!-- Counter js file -->
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <!-- Magnific js file -->
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <!-- SmoothScroll -->
+    <script src="js/SmoothScroll.js"></script>
+    <!-- Parallax js -->
+    <script src="js/parallaxie.js"></script>
+    <!-- MagicCursor js file -->
+    <script src="js/gsap.min.js"></script>
+    <!-- Text Effect js file -->
+    <script src="js/SplitText.js"></script>
+    <script src="js/ScrollTrigger.min.js"></script>
+    <!-- YTPlayer js File -->
+    <script src="js/jquery.mb.YTPlayer.min.js"></script>
+    <!-- Audio js File -->
+    <script src="js/plyr.js"></script>
+    <!-- Wow js file -->
+    <script src="js/wow.js"></script>
+    <!-- Main Custom js file -->
+    <script src="js/function.js"></script>
+
+
+    <!-- Main Custom js file -->
+    <script src="js/integrated-spine-care.js"></script>
+
+    <!-- ========== COMBINED LIGHTBOX SCRIPT ========== -->
+    <script>
+        (function() {
+            // select all zoom links (they point to high-res version)
+            const zoomLinks = document.querySelectorAll('.zoom');
+
+            // helper: create lightbox with close button and background click
+            function openLightbox(imgSrc) {
+                // create lightbox container
+                const lb = document.createElement('div');
+                lb.className = 'lightbox';
+
+                // image element
+                const img = document.createElement('img');
+                img.src = imgSrc;
+                img.alt = 'enlarged view';
+
+                // close button (×)
+                const closeBtn = document.createElement('span');
+                closeBtn.className = 'close';
+                closeBtn.innerHTML = '×';
+                closeBtn.setAttribute('aria-label', 'close lightbox');
+
+                // append image and close button to lightbox
+                lb.appendChild(img);
+                lb.appendChild(closeBtn);
+
+                // add to body
+                document.body.appendChild(lb);
+
+                // close when clicking on close button
+                closeBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    lb.remove();
+                });
+
+                // close when clicking on the background (lightbox itself)
+                lb.addEventListener('click', function(e) {
+                    if (e.target === lb) { // only if directly on the dark background
+                        lb.remove();
+                    }
+                });
+
+                // optional: close with escape key
+                function escHandler(e) {
+                    if (e.key === 'Escape') {
+                        lb.remove();
+                        document.removeEventListener('keydown', escHandler);
+                    }
+                }
+                document.addEventListener('keydown', escHandler);
+
+                // clean up event listener when lightbox is removed (just in case)
+                // but it's fine, we remove it manually
+            }
+
+            // attach click event to each zoom link
+            zoomLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault(); // stop navigation
+                    const highResUrl = this.href; // we stored high-res version in href
+                    openLightbox(highResUrl);
+                });
+            });
+
+            // also, for extra robustness, if any image is missing zoom link? not needed.
+            // but we also want to keep the possibility to click on overlay area? zoom link is already the only thing in overlay.
+            // if someone clicks on the overlay background (not the link), nothing happens, which is fine.
+        })();
+    </script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hospital Hero Section</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* ================= GLOBAL ================= */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+body{
+    overflow-x:hidden;
+    background: linear-gradient(-45deg, #e3f2fd, #ffffff, #e0f7fa, #f1f8ff);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    position: relative;
+}
+
+/* Animated Gradient */
+@keyframes gradientBG {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+/* ================= CONTAINER ================= */
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:80px 20px;
+    position:relative;
+    z-index:2;
+}
+
+.hero{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:60px;
+}
+
+/* ================= LEFT IMAGE ================= */
+.hero-left{
+    position:relative;
+    animation:slideLeft 1.2s ease forwards;
+    opacity:0;
+}
+
+.hero-left img{
+    width:450px;
+    border-radius:20px;
+}
+
+/* Floating Shape Decorations */
+.shape1, .shape2{
+    position:absolute;
+    background:#F44336;
+    border-radius:50%;
+    z-index:-1;
+    animation:float 4s ease-in-out infinite;
+}
+
+.shape1{
+    width:120px;
+    height:120px;
+    top:-30px;
+    left:-40px;
+}
+
+.shape2{
+    width:80px;
+    height:80px;
+    bottom:-25px;
+    right:-25px;
+    animation-delay:2s;
+}
+
+/* ================= RIGHT CONTENT ================= */
+.hero-right{
+    max-width:550px;
+    animation:slideRight 1.2s ease forwards;
+    opacity:0;
+}
+
+.hero-right h1{
+    font-size:42px;
+    font-weight:700;
+    color:#0d47a1;
+    margin-bottom:20px;
+    animation:fadeUp 1.5s ease forwards;
+}
+
+.hero-right p{
+    color:#455a64;
+    margin-bottom:30px;
+    line-height:1.8;
+    text-align:justify;
+    animation:fadeUp 1.8s ease forwards;
+}
+
+/* ================= BUTTONS ================= */
+.buttons{
+    display:flex;
+    gap:15px;
+    animation:fadeUp 2s ease forwards;
+}
+
+button{
+    padding:12px 25px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:600;
+    transition:all 0.3s ease;
+}
+
+.btn-primary{
+    background:#0288d1;
+    color:#fff;
+}
+
+.btn-primary:hover{
+    transform:translateY(-5px);
+    box-shadow:0 10px 20px rgba(2,136,209,0.4);
+}
+
+.btn-secondary{
+    background:#37474f;
+    color:#fff;
+}
+
+.btn-secondary:hover{
+    transform:translateY(-5px);
+    box-shadow:0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* ================= ANIMATIONS ================= */
+@keyframes slideLeft{
+    from{transform:translateX(-100px); opacity:0;}
+    to{transform:translateX(0); opacity:1;}
+}
+
+@keyframes slideRight{
+    from{transform:translateX(100px); opacity:0;}
+    to{transform:translateX(0); opacity:1;}
+}
+
+@keyframes fadeUp{
+    from{transform:translateY(30px); opacity:0;}
+    to{transform:translateY(0); opacity:1;}
+}
+
+@keyframes float{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-15px);}
+    100%{transform:translateY(0);}
+}
+
+/* ================= FLOATING MEDICAL ICONS ================= */
+.medical-icons span{
+    position:absolute;
+    color:#0288d1;
+    font-size:40px;
+    opacity:0.12;
+    animation: floatIcons 20s linear infinite;
+}
+
+.medical-icons span:nth-child(1){
+    left:10%;
+    top:20%;
+    animation-delay:0s;
+}
+
+.medical-icons span:nth-child(2){
+    left:80%;
+    top:30%;
+    animation-delay:5s;
+}
+
+.medical-icons span:nth-child(3){
+    left:50%;
+    top:70%;
+    animation-delay:10s;
+}
+
+.medical-icons span:nth-child(4){
+    left:20%;
+    top:80%;
+    animation-delay:3s;
+}
+
+.medical-icons span:nth-child(5){
+    left:70%;
+    top:10%;
+    animation-delay:7s;
+}
+
+@keyframes floatIcons{
+    0%{
+        transform:translateY(0px) rotate(0deg);
+    }
+    50%{
+        transform:translateY(-40px) rotate(180deg);
+    }
+    100%{
+        transform:translateY(0px) rotate(360deg);
+    }
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:900px){
+    .hero{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .hero-left img{
+        width:100%;
+    }
+
+    .buttons{
+        justify-content:center;
+        flex-wrap:wrap;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Floating Medical Symbols -->
+
+<section style="    background-image: url(../images/your_comfort_bg.png);">
+
+<div class="medical-icons">
+    <span>+</span>
+    <span>+</span>
+    <span>+</span>
+    <span>+</span>
+    <span>+</span>
+</div>
+
+<div class="container" >
+    <div class="hero">
+
+        <div class="hero-left">
+            <div class="shape1"></div>
+            <img src="https://holisticwellnesscaarecentre.in/images/2.jpg" alt="Hospital">
+            <div class="shape2"></div>
+        </div>
+
+        <div class="hero-right">
+            <h1>CHAIRMAN'S NOTE</h1>
+            <p>
+            Alongside the evolvement of human race different types of treatment modalities came into foray. 
+            Each proposed its own interpretation of human body, its functioning and the various ailments causing imbalance. 
+            Of all the oldest modalities, Acupuncture is among the very few still widely practiced and dates back to the stone age. 
+            I am privileged to serve the community as a Homoeopathy consultant and medical Acupuncturist.
+            </p>
+
+            <div class="buttons">
+                <button class="btn-primary">Get Started</button>
+                <button class="btn-secondary">View Projects</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+</section>
+</body>
+</html>

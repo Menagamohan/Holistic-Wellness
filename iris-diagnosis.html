@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="robots" content="max-image-preview:large">
+    <!-- Page Title -->
+    <title>Iris Diagnosis - ChiroHeal</title>
+    <!-- Favicon Icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
+    <!-- Google Fonts Css-->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&amp;display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
+    <!-- Bootstrap Css -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <!-- SlickNav Css -->
+    <link href="css/slicknav.min.css" rel="stylesheet">
+    <!-- Swiper Css -->
+    <link rel="stylesheet" href="css/swiper-bundle.min.css">
+    <!-- Font Awesome Icon Css-->
+    <link href="css/all.css" rel="stylesheet" media="screen">
+    <!-- Animated Css -->
+    <link href="css/animate.css" rel="stylesheet">
+    <!-- Magnific Popup Core Css File -->
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <!-- Audio Css File -->
+    <link rel="stylesheet" href="css/plyr.css">
+    <!-- Main Custom Css -->
+    <link href="css/custom.css" rel="stylesheet" media="screen">
+    <link href="css/logo.css" rel="stylesheet" media="screen">
+
+    <!-- Scoped styles for Iris Diagnosis content (avoids conflicts) -->
+    <style>
+        .iridology-content {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #1a2b3e;
+            line-height: 1.5;
+            max-width: 1200px;
+            margin: 2rem auto;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 2rem;
+            padding: 1.25rem 1rem;
+            box-shadow: 0 8px 24px rgba(0, 20, 50, 0.08);
+            backdrop-filter: blur(2px);
+        }
+        
+        .iridology-content h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            background: linear-gradient(145deg, #0b3954, #1b5e7a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.25rem;
+            line-height: 1.2;
+        }
+        
+        .iridology-content .subhead {
+            font-size: 1rem;
+            color: #2c4c6e;
+            border-left: 4px solid #7ab8d4;
+            padding-left: 1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            background: #e5f0f7;
+            padding: 0.6rem 1rem;
+            border-radius: 1rem;
+        }
+        
+        .iridology-content .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+        
+        .iridology-content .card {
+            background: #ffffffd9;
+            backdrop-filter: blur(4px);
+            border-radius: 1.5rem;
+            padding: 1.25rem 1.2rem;
+            box-shadow: 0 6px 14px rgba(0, 30, 60, 0.05);
+            border: 1px solid rgba(160, 195, 225, 0.3);
+            transition: all 0.1s ease;
+        }
+        
+        .iridology-content .card:hover {
+            border-color: #9ac2db;
+            box-shadow: 0 10px 20px rgba(27, 78, 112, 0.1);
+        }
+        
+        .iridology-content .card-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #113946;
+            margin-bottom: 0.9rem;
+            border-bottom: 2px dotted #b8d7e8;
+            padding-bottom: 0.4rem;
+        }
+        
+        .iridology-content .card-title span {
+            background: #dbeefb;
+            border-radius: 2rem;
+            padding: 0.2rem 0.7rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #0b4b6b;
+            margin-left: 0.5rem;
+        }
+        
+        .iridology-content .card p {
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+            color: #1e3b4f;
+        }
+        
+        .iridology-content .card ul,
+        .iridology-content .card ol {
+            padding-left: 1.2rem;
+            margin: 0.6rem 0 0.2rem;
+        }
+        
+        .iridology-content .card li {
+            font-size: 0.94rem;
+            margin-bottom: 0.3rem;
+            color: #1c4057;
+        }
+        
+        .iridology-content .badge-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 0.8rem 0 0.2rem;
+        }
+        
+        .iridology-content .badge {
+            background: #ecf5fa;
+            border-radius: 2rem;
+            padding: 0.3rem 1rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #1b5a7a;
+        }
+        
+        .iridology-content .eye-icon {
+            font-size: 1.4rem;
+            filter: drop-shadow(0 2px 4px rgba(0, 80, 120, 0.2));
+        }
+        
+        .iridology-content .summary-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+        
+        .iridology-content .summary-item {
+            background: #e0eff9;
+            border-radius: 1.2rem;
+            padding: 1rem 1.2rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            border: 1px solid #c0ddef;
+        }
+        
+        .iridology-content .summary-item .aspect {
+            font-weight: 600;
+            min-width: 115px;
+            color: #0d4b6b;
+            font-size: 0.95rem;
+        }
+        
+        .iridology-content .summary-item .value {
+            font-weight: 400;
+            color: #173e54;
+            line-height: 1.4;
+        }
+        
+        .iridology-content hr {
+            border: none;
+            height: 2px;
+            background: linear-gradient(to right, #c2ddec, transparent);
+            margin: 1.2rem 0 0.8rem;
+        }
+        
+        .iridology-content .footnote {
+            font-size: 0.85rem;
+            background: #f4fbfe;
+            padding: 0.8rem 1.2rem;
+            border-radius: 2rem;
+            color: #1c5570;
+            border: 1px solid #cbe0ed;
+            margin-top: 1.8rem;
+        }
+        
+        .iridology-content .flex-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.4rem 1rem;
+        }
+        
+        .iridology-content .pill {
+            background: #1f6e93;
+            color: white;
+            padding: 0.2rem 0.9rem;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+        }
+        
+        .iridology-content .quote-note {
+            background: #fff9e0;
+            border-left: 5px solid #eba45e;
+            padding: 0.7rem 1rem;
+            border-radius: 1rem;
+            font-size: 0.9rem;
+            margin: 1rem 0 0.5rem;
+        }
+        
+        .iridology-content .chart-preview {
+            display: flex;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+        }
+        
+        .iridology-content .clock-seg {
+            background: white;
+            border-radius: 30px;
+            border: 1px solid #c1ddec;
+            padding: 0.2rem 0.6rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        @media (min-width: 600px) {
+            .iridology-content .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .iridology-content .summary-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .iridology-content .summary-item {
+                align-items: center;
+            }
+        }
+        
+        @media (min-width: 900px) {
+            .iridology-content .grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .iridology-content .span-2 {
+                grid-column: span 2;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header (unchanged) -->
+    <header id="sisf-page-header" class="sisf-main-header sisf--header sisf-standerd-header">
+        <div class="header-top sisf-skin--light">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 p-0">
+                        <div class="header_col">
+                            <div class="sisf-widget-holder sisf--left">
+                                <div id="sis_core_icon_list_item-3" class="widget widget_sis_core_icon_list_item sisf-top-bar-widget">
+                                    <a class="logo" href="index.html">
+                                        <img src="images/logo/logo-01.png" alt="Logo">
+                                        <span class="logo-title">
+                                 <span class="main-title">Holistic Wellness</span><br>
+                                        <span class="sub-title">Caare Centre, Puducherry</span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="header-center-icons">
+                                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                            </div>
+                            <div class="mail-us me-1">
+                                <a href="0413-2255445 📱 99448 75445"><span class="sisf-e-title-text"><img src="images/home-mail-icon.png" alt="ChiroHeal"> Call us: 0413-2255445 📱 99448 75445</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="sisf-page-header-inner" class="sisf-skin--light align-items-center d-flex justify-content-center position-relative">
+            <a class="navbar-brand mobile-block" href="index.html">
+                <img src="images/logo/logo-01.png" style="width: 100px; height: 90px;" alt="Logo">
+            </a>
+            <div class="sisf-divided-header-right-wrapper justify-content-end d-flex align-items-center">
+                <nav class="navbar navbar-expand-lg me-5">
+                    <div class="collapse navbar-collapse main-menu">
+                        <div class="nav-menu-wrapper">
+                            <ul class="navbar-nav ms-auto" id="menu">
+                                <!-- 1. About -->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="about-us.html">About</a>
+                                    <ul class="sub-menu">
+                                        <li class="nav-item"><a class="nav-link" href="#">CEO Message</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#">What Is Integrative Medicine &amp; Therapies</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#">Our Team</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#">Additional Facilities &amp; Services</a></li>
+                                    </ul>
+                                </li>
+                                <!-- 2. Integrated Spine Care -->
+                                <li class="nav-item submenu">
+                                    <a class="nav-link" href="integrated-spine-care.html">Integrated Spine Care <i class="fas fa-chevron-down custom-toggle-icon px-2"></i></a>
+                                    <ul class="sub-menu">
+                                        <li class="nav-item"><a class="nav-link" href="#">Homoeopathy Medicine</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#">Advanced Acupuncture Treatment</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#">Advanced Ozone Therapy Treatment</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#">Advanced IV Nutrition Therapy</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#">Advanced Varma Therapy Treatment</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#">Chiropractic &amp; Manual Therapy</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#">Advanced Robotic Spinal &amp; Knee Decompression Therapy</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#">Advanced Cupping Therapy</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#">Yoga Therapy</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="chiropractic-care.html">Chiropractic Care</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="spine-rehabilitation.html">Spine Rehabilitation</a></li>
+                                    </ul>
+                                </li>
+                                <!-- 3. We Also Treat -->
+                                <li class="nav-item submenu">
+                                    <a class="nav-link" href="#">We Also Treat <i class="fas fa-chevron-down custom-toggle-icon px-2"></i></a>
+                                    <ul class="sub-menu">
+                                        <li class="nav-item"><a class="nav-link" href="#">Neurodegenerative Diseases</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#">Autoimmune Diseases</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#">Gastrointestinal Diseases</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#">Skin Diseases</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#">Reproductive Disorders</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#">Hormonal Imbalances</a></li>
+                                    </ul>
+                                </li>
+                                <!-- 4. Integrative Medicine & Therapies -->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="integrative-medicine.html">Integrative Medicine & Therapies</a>
+                                    <ul class="sub-menu">
+                                        <li class="nav-item"><a class="nav-link" href="#">Homoeopathy</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#">Naturopathy</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#">Acupuncture</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#">Ozone Therapy</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#">IV Nutrition Therapy</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#">Functional Medicine</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#">Varma Therapy</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#">Chiropractic &amp; Manual Therapy</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#">Robotic Spinal &amp; Knee Decompression Therapy</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#">Hydrotherapy</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#">Massage Therapy</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#">Cupping Therapy</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#">Yoga Therapy</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#">Physiotherapy</a></li>
+                                    </ul>
+                                </li>
+                                <!-- 5. Wellness Diagnostics -->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="wellness-diagnostics.html">Wellness Diagnostics</a>
+                                    <ul class="sub-menu">
+                                        <li class="nav-item"><a class="nav-link" href="#">Iris Diagnosis</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#">Pulse Diagnosis</a></li>
+                                    </ul>
+                                </li>
+                                <!-- 6. Institute -->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="institute.html">Institute</a>
+                                    <ul class="sub-menu">
+                                        <li class="nav-item"><a class="nav-link" href="#">N.K. Lakshiya Institute of Health Sciences</a></li>
+                                    </ul>
+                                </li>
+                                <!-- 7. Laboratory & Pharmacy -->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="laboratory-pharmacy.html">Laboratory & Pharmacy</a>
+                                    <ul class="sub-menu">
+                                        <li class="nav-item"><a class="nav-link" href="#">N.K. Kaushik Clinical Laboratory</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#">Sri Sugam Homoeopathy Pharmacy</a></li>
+                                    </ul>
+                                </li>
+                                <!-- 8. Testimonials -->
+                                <li class="nav-item"><a class="nav-link" href="testimonials.html">Testimonials</a></li>
+                                <!-- 9. Gallery -->
+                                <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                                <!-- 10. Contact Us -->
+                                <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="navbar-toggle"></div>
+            <div class="responsive-menu"></div>
+        </div>
+    </header>
+    <!-- Header End -->
+
+    <!-- Banner Section Start (corrected title) -->
+    <div class="sisf-banner position-relative">
+        <div class="banner-img">
+            <figure>
+                <img src="images/lesson_hero_banner.png" alt="Iris Diagnosis">
+            </figure>
+        </div>
+        <div class="sisf-page-title sisf-m sisf-title--standard sisf-alignment--center">
+            <div class="sisf-m-inner">
+                <div class="sisf-m-content sisf-content-grid">
+                    <h1 class="sisf-m-title entry-title">Iris Diagnosis (Iridology)</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Banner Section End -->
+
+    <!-- Iris Diagnosis Content (scoped) -->
+    <div class="iridology-content">
+        <div class="flex-row">
+            <h1>🌿 Iris diagnosis <span style="font-size:1.2rem; background: none; -webkit-text-fill-color: #346b87;">(iridology)</span></h1>
+            <span class="pill">evidence‑based overview</span>
+        </div>
+        <div class="subhead">
+            ⚕️ Examining patterns, colors & markings – what science says vs. traditional claims
+        </div>
+
+        <div class="grid">
+            <!-- CORE IDEA -->
+            <div class="card">
+                <div class="card-title"><span class="eye-icon">🧠</span> Core idea</div>
+                <p><strong>Body mapped onto iris</strong> – changes in organs supposedly reflect as iris markings. Each iris is unique and reveals health status: inflammation, toxicity, weakness.</p>
+                <div class="badge-list">
+                    <span class="badge">🔍 holistic</span>
+                    <span class="badge">🌀 alternative</span>
+                </div>
+                <p style="margin-top: 0.6rem; background:#f2f8fd; padding:0.5rem; border-radius:1rem;">❌ But <strong>modern medicine</strong> does not support these claims (no reliable link).</p>
+            </div>
+            <!-- IRIS CHART -->
+            <div class="card">
+                <div class="card-title"><span class="eye-icon">🗺️</span> Iris chart</div>
+                <p>Divided into zones like a clock. Each zone corresponds to an organ:</p>
+                <div class="chart-preview">
+                    <span class="clock-seg">12 ⬆️ brain</span>
+                    <span class="clock-seg">6 ⬇️ digestion</span>
+                    <span class="clock-seg">left iris → left body</span>
+                    <span class="clock-seg">right iris → right body</span>
+                </div>
+                <ul style="margin-top:0.8rem;">
+                    <li>Top → brain/head</li>
+                    <li>Lower → digestive organs</li>
+                </ul>
+            </div>
+            <!-- HOW PERFORMED -->
+            <div class="card">
+                <div class="card-title"><span class="eye-icon">🔬</span> Diagnosis session</div>
+                <ul>
+                    <li>Magnifying glass / slit lamp / digital iris photography</li>
+                    <li>Look for: spots, lines, color rings, texture</li>
+                    <li>Interpret using iris charts</li>
+                    <li>Session lasts <strong>30–60 min</strong></li>
+                </ul>
+            </div>
+            <!-- CLAIMED CONDITIONS -->
+            <div class="card">
+                <div class="card-title"><span class="eye-icon">🧾</span> Claimed to detect</div>
+                <ul>
+                    <li>Digestive disorders</li>
+                    <li>Liver / kidney stress</li>
+                    <li>Nutritional deficiencies</li>
+                    <li>Immune weakness</li>
+                    <li>Chronic inflammation</li>
+                    <li>Toxic buildup</li>
+                </ul>
+                <div class="quote-note">⚠️ No scientific evidence for these claims</div>
+            </div>
+            <!-- SCIENTIFIC VIEW -->
+            <div class="card">
+                <div class="card-title"><span class="eye-icon">🏛️</span> Scientific view</div>
+                <p>Major medical organisations conclude:</p>
+                <ul>
+                    <li>Iris structure <strong>does not change</strong> with systemic disease</li>
+                    <li>Controlled studies: iridology <strong>no better than chance</strong></li>
+                    <li>Cannot replace lab tests / imaging</li>
+                </ul>
+                <p style="margin-top:0.8rem; background:#f0eef9; padding:0.6rem; border-radius:1rem;">📉 Classified as <strong>pseudoscientific practice</strong>.</p>
+            </div>
+            <!-- WHY IRIS DOESN'T REFLECT ORGANS -->
+            <div class="card">
+                <div class="card-title"><span class="eye-icon">🧬</span> Stability of iris</div>
+                <p>Iris develops early, remains structurally stable. Eye color & markings are <strong>largely genetic</strong>. No direct neurological/vascular pathways link all internal organs to iris patterns.</p>
+            </div>
+            <!-- SAFETY & RISKS -->
+            <div class="card">
+                <div class="card-title"><span class="eye-icon">⚖️</span> Safety & risks</div>
+                <p><strong>Physically safe</strong> (just looking), but risks include:</p>
+                <ul>
+                    <li>Delayed proper medical diagnosis</li>
+                    <li>False reassurance / unnecessary fear</li>
+                    <li>Financial exploitation</li>
+                </ul>
+                <p style="color:#9e4a2b;">Serious conditions may go untreated if relied upon.</p>
+            </div>
+            <!-- WHEN TO SEE A REAL DOCTOR -->
+            <div class="card span-2">
+                <div class="card-title"><span class="eye-icon">🏥</span> When to see a medical professional</div>
+                <p style="font-weight:500;">Persistent symptoms:</p>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.8rem 1.5rem; margin: 0.8rem 0;">
+                    <span style="background:#fff1e0; padding:0.3rem 1.2rem; border-radius:3rem;">🔹 Pain</span>
+                    <span style="background:#fff1e0; padding:0.3rem 1.2rem; border-radius:3rem;">🔹 Fatigue</span>
+                    <span style="background:#fff1e0; padding:0.3rem 1.2rem; border-radius:3rem;">🔹 Digestive issues</span>
+                    <span style="background:#fff1e0; padding:0.3rem 1.2rem; border-radius:3rem;">🔹 Vision changes</span>
+                    <span style="background:#fff1e0; padding:0.3rem 1.2rem; border-radius:3rem;">🔹 Unexplained weight loss</span>
+                </div>
+                <p>Consult: licensed physician, ophthalmologist, or relevant specialist.</p>
+            </div>
+        </div>
+
+        <hr>
+        <h2 style="font-size:1.6rem; font-weight:500; margin-bottom:0.2rem;">📌 summary</h2>
+        <div class="summary-grid">
+            <div class="summary-item">
+                <span class="aspect">Scientific support</span>
+                <span class="value">❌ No reliable evidence</span>
+            </div>
+            <div class="summary-item">
+                <span class="aspect">Medical recognition</span>
+                <span class="value">❌ Not recognized by mainstream medicine</span>
+            </div>
+            <div class="summary-item">
+                <span class="aspect">Risk level</span>
+                <span class="value">Low physically, high if replacing medical care</span>
+            </div>
+            <div class="summary-item">
+                <span class="aspect">Diagnostic reliability</span>
+                <span class="value">⚖️ Not proven (no better than chance)</span>
+            </div>
+        </div>
+
+        <div class="footnote">
+            <span style="font-weight:600;">👁️ real eye signs that CAN indicate disease:</span> e.g., jaundice (yellow sclera), diabetic retinopathy, arcus senilis. These are diagnosed by ophthalmologists — different from iridology.
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.2rem; font-size:0.8rem; color:#3f6e8b;">
+            <span>🌐 iridology history • 19th century Hungary • not evidence‑based</span>
+            <span>📱 mobile‑ready design</span>
+        </div>
+
+        <p style="font-size:0.75rem; margin-top: 1.5rem; color:#618aa5; border-top: 1px dashed #c6ddec; padding-top: 0.5rem;">
+            ⓘ based on detailed iris diagnosis overview – for educational comparison. always consult a medical doctor for health concerns.
+        </p>
+    </div>
+
+    <!-- Footer (unchanged) -->
+    <footer class="main-footer">
+        <div id="sisf-page-footer-top-area-inner" class="footer-top-area-inner sisf-content-full-width">
+            <div class="container">
+                <div class="row gallery-items page-gallery-box">
+                    <div class="gallery-container">
+                        <div class="gallery-item single-center">
+                            <div class="wow fadeInUp">
+                                <a href="images/ft-gallery-1.png">
+                                    <figure><img src="images/ft-gallery-1.png" alt="ChiroHeal"></figure>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="gallery-item single-center">
+                            <div class="wow fadeInUp mb-1">
+                                <a href="images/ft-gallery-2.png">
+                                    <figure><img src="images/ft-gallery-2.png" alt="ChiroHeal"></figure>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="gallery-item single-center">
+                            <div class="wow fadeInUp mb-1">
+                                <a href="images/ft-gallery-3.png">
+                                    <figure><img src="images/ft-gallery-3.png" alt="ChiroHeal"></figure>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="gallery-item single-center">
+                            <div class="wow fadeInUp">
+                                <a href="images/ft-gallery-4.png">
+                                    <figure><img src="images/ft-gallery-4.png" alt="ChiroHeal"></figure>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="gallery-item single-center">
+                            <div class="wow fadeInUp">
+                                <a href="images/ft-gallery-5.png">
+                                    <figure><img src="images/ft-gallery-5.png" alt="ChiroHeal"></figure>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="sisf-page-footer-middle-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-12">
+                        <div class="footer-logo">
+                            <a href="index.html"><img src="images/logo.png" alt="ChiroHeal"></a>
+                        </div>
+                        <div class="text">
+                            <p>Welcome to Chiro Heal, where your health and wellness come first. Our expert chiropractors are dedicated to providing personalized care.</p>
+                        </div>
+                        <div class="footer-social-links">
+                            <ul>
+                                <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                                <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-12">
+                        <div class="footer-links">
+                            <h3>Useful Links</h3>
+                            <ul>
+                                <li><a href="shop.html">Shop</a></li>
+                                <li><a href="my-account.html">My account</a></li>
+                                <li><a href="cart.html">Cart</a></li>
+                                <li><a href="checkout.html">Checkout</a></li>
+                                <li><a href="wishlist.html">Wishlist</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-12">
+                        <div class="footer-links">
+                            <h3>Links</h3>
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="blogs.html">Blogs</a></li>
+                                <li><a href="our-services.html">Our Services</a></li>
+                                <li><a href="lessons.html">Lessons</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-12">
+                        <div class="footer-contact">
+                            <h3>Contact</h3>
+                            <div class="footer-contact-details">
+                                <div class="footer-info-box">
+                                    <p>361 Avisco Green St,<br> Lovaso Avenue, Los Angeles <br> 90251, US</p>
+                                </div>
+                            </div>
+                            <p class="mt-3 mb-3">Tel: +1 5263 2540 981</p>
+                            <p class="mb-0">info@chiroheal.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sisf-page-footer-bottom-area">
+            <div class="container">
+                <div class="footer-copyright">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="footer-copyright-text">
+                                <p>&copy; ChiroHeal. All Rights Reserved.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="footer-privacy-policy">
+                                <ul>
+                                    <li><a href="#">Privacy Policy</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer End -->
+
+    <!-- Scripts (unchanged) -->
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/validator.min.js"></script>
+    <script src="js/jquery.slicknav.js"></script>
+    <script src="js/swiper-bundle.min.js"></script>
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/SmoothScroll.js"></script>
+    <script src="js/parallaxie.js"></script>
+    <script src="js/gsap.min.js"></script>
+    <script src="js/SplitText.js"></script>
+    <script src="js/ScrollTrigger.min.js"></script>
+    <script src="js/jquery.mb.YTPlayer.min.js"></script>
+    <script src="js/plyr.js"></script>
+    <script src="js/wow.js"></script>
+    <script src="js/function.js"></script>
+</body>
+
+</html>

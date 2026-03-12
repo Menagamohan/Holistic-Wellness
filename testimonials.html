@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+
+<head>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="robots" content="max-image-preview:large">
+    <!-- Page Title -->
+    <title>ChiroHeal - Chiropractor & Physiotherapy Wellness Center</title>
+    <!-- Favicon Icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
+    <!-- Google Fonts Css-->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&amp;display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
+    <!-- Bootstrap Css -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <!-- SlickNav Css -->
+    <link href="css/slicknav.min.css" rel="stylesheet">
+    <!-- Swiper Css -->
+    <link rel="stylesheet" href="css/swiper-bundle.min.css">
+    <!-- Font Awesome Icon Css-->
+    <link href="css/all.css" rel="stylesheet" media="screen">
+    <!-- Animated Css -->
+    <link href="css/animate.css" rel="stylesheet">
+    <!-- Magnific Popup Core Css File -->
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <!-- Audio Css File -->
+    <link rel="stylesheet" href="css/plyr.css">
+    <!-- Main Custom Css -->
+    <link href="css/custom.css" rel="stylesheet" media="screen">
+
+    <link href="css/logo.css" rel="stylesheet" media="screen">
+
+
+    <style>
+        /* --- floating background (fixed) --- */
+        
+        .bg {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(0, 140, 255, 0.15);
+            animation: float 18s infinite linear;
+        }
+        
+        .circle:nth-child(1) {
+            width: 120px;
+            height: 120px;
+            left: 10%;
+            bottom: -10%;
+        }
+        
+        .circle:nth-child(2) {
+            width: 80px;
+            height: 80px;
+            left: 40%;
+            bottom: -15%;
+        }
+        
+        .circle:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            left: 70%;
+            bottom: -5%;
+        }
+        
+        .circle:nth-child(4) {
+            width: 60px;
+            height: 60px;
+            left: 85%;
+            bottom: -20%;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-120vh);
+            }
+            /* move up and disappear */
+        }
+        /* --- testimonials section --- */
+        
+        .testimonials {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .title {
+            font-size: 34px;
+            color: #0a4c8b;
+            margin-bottom: 50px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        /* --- slider container --- */
+        
+        .slider {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            /* optional subtle mask */
+            -webkit-mask: linear-gradient(90deg, transparent, white 5%, white 95%, transparent);
+            mask: linear-gradient(90deg, transparent, white 5%, white 95%, transparent);
+        }
+        /* --- track with duplicated cards for seamless infinite scroll --- */
+        
+        .slide-track {
+            display: flex;
+            width: calc(320px * 10);
+            /* 10 cards total (2 sets of 5) → 3200px */
+            animation: scroll 40s linear infinite;
+        }
+        /* pause on hover (optional but user-friendly) */
+        
+        .slider:hover .slide-track {
+            animation-play-state: paused;
+        }
+        
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+            /* moves exactly half the track width (1600px) */
+        }
+        /* --- testimonial card (outer width exactly 320px including margin) --- */
+        
+        .card {
+            width: 290px;
+            /* 290px + 30px margin = 320px */
+            margin: 0 15px;
+            background: white;
+            padding: 25px 20px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 30, 60, 0.08);
+            text-align: left;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            flex-shrink: 0;
+            /* prevent flex shrinking */
+        }
+        
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 30px rgba(0, 80, 150, 0.12);
+        }
+        
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        
+        .profile img {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #e6f0fa;
+        }
+        
+        .profile h4 {
+            font-size: 16px;
+            color: #0a4c8b;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .profile p {
+            font-size: 13px;
+            color: #6b7a8d;
+        }
+        
+        .stars {
+            color: #f5b301;
+            margin: 12px 0 10px;
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+        
+        .stars i {
+            margin-right: 2px;
+        }
+        
+        .text {
+            font-size: 14px;
+            color: #2c3e50;
+            line-height: 1.6;
+            border-top: 1px solid #eef2f7;
+            padding-top: 12px;
+        }
+        /* small screens: keep cards visible */
+        
+        @media (max-width: 700px) {
+            .card {
+                width: 260px;
+                margin: 0 10px;
+            }
+            .slide-track {
+                width: calc(280px * 10);
+                /* adjust roughly */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header New Start -->
+    <header id="sisf-page-header" class="sisf-main-header sisf--header sisf-standerd-header">
+        <div class="header-top sisf-skin--light">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 p-0">
+                        <div class="header_col">
+                            <div class="sisf-widget-holder sisf--left">
+                                <div id="sis_core_icon_list_item-3" class="widget widget_sis_core_icon_list_item sisf-top-bar-widget">
+                                    <!-- Logo Start -->
+
+                                    <!-- Logo Start -->
+                                    <a class="logo" href="index.html">
+                                        <img src="images/logo/logo-01.png" alt="Logo">
+
+                                        <span class="logo-title">
+      <span class="main-title">Holistic Wellness</span><br>
+                                        <span class="sub-title">Caare Centre, Puducherry</span>
+                                        </span>
+                                    </a>
+                                    <!-- Logo End -->
+                                    <!-- Logo Start -->
+                                    <!-- <a class="navbar-brand mobile-block" href="index.html">
+               <img src="images/logo/logo-01.jpeg" alt="Logo">
+               </a> -->
+                                    <!-- Logo End -->
+                                </div>
+                            </div>
+
+
+                            <div class="header-center-icons">
+                                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                            </div>
+
+
+                            <div class="mail-us me-1">
+                                <a href="0413-2255445 📱 99448 75445"><span class="sisf-e-title-text"><img src="images/home-mail-icon.png" alt="ChiroHeal"> Call us: 0413-2255445
+📱 99448 75445</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="sisf-page-header-inner" class="sisf-skin--light align-items-center d-flex justify-content-center position-relative">
+            <!-- Logo Start -->
+            <a class="navbar-brand mobile-block" href="index.html">
+                <img src="images/logo/logo-01.png" style="width: 100px; height: 90px;" alt="Logo">
+            </a>
+            <div class="sisf-divided-header-right-wrapper justify-content-end d-flex align-items-center">
+                <nav class="navbar navbar-expand-lg me-5">
+
+
+                    <!-- Main Menu Start -->
+                    <div class="collapse navbar-collapse main-menu">
+                        <div class="nav-menu-wrapper">
+                            <ul class="navbar-nav ms-auto" id="menu">
+
+                                <!-- 1. About -->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="about-us.html">About</a>
+                                    <ul class="sub-menu">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#">CEO Message</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#">What Is Integrative Medicine &amp; Therapies</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#">About Us</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#">Our Team</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#">Additional Facilities &amp; Services</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <!-- 2. Integrated Spine Care -->
+                                <li class="nav-item submenu">
+                                    <a class="nav-link" href="integrated-spine-care.html">
+      Integrated Spine Care
+      <i class="fas fa-chevron-down custom-toggle-icon px-2"></i>
+    </a>
+                                    <ul class="sub-menu">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="index.html">Homoeopathy Medicine</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="advanced-acupuncture-treatment.html">Advanced Acupuncture Treatment</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="advanced-ozone-therapy-treatment.html">Advanced Ozone Therapy Treatment</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="advanced-4-nutrition-therapy.html">Advanced IV Nutrition Therapy</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="advanced-varma-therapy-treatment.html">Advanced Varma Therapy Treatment</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="chiropractic.html">Chiropractic &amp; Manual Therapy</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="advanced-robotic-spinal.html">Advanced Robotic Spinal &amp; Knee Decompression Therapy</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="advanced-cupping-therapy.html">Advanced Cupping Therapy</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#">Yoga Therapy</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="chiropractic-care.html">Chiropractic Care</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="spine-rehabilitation.html">Spine Rehabilitation</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <!-- 3. We Also Treat -->
+                                <li class="nav-item submenu">
+                                    <a class="nav-link" href="#">
+      We Also Treat
+      <i class="fas fa-chevron-down custom-toggle-icon px-2"></i>
+    </a>
+                                    <ul class="sub-menu">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="neurodegenerative-diseases.html">Neurodegenerative Diseases</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="autoimmune-diseases.html">Autoimmune Diseases</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="gastrointestinal-diseases.html">Gastrointestinal Diseases</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="skin-diseases.html">Skin Diseases</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="reproductive-disorders.html">Reproductive Disorders</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="hormonal-imbalances.html">Hormonal Imbalances</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <!-- 4. Integrative Medicine & Therapies -->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="integrative-medicine.html">
+      Integrative Medicine & Therapies
+    </a>
+
+
+
+
+
+
+                                    <ul class="sub-menu">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="our-services.html">Homoeopathy</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="naturopathy.html">Naturopathy</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="acupuncture.html">Acupuncture</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="Ozone-therapy.html">Ozone Therapy</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="n">IV Nutrition Therapy</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="functional-medicine.html">Functional Medicine</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="varama-therapy.html">Varma Therapy</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="chiropractic-manual-therapy.html">Chiropractic &amp; Manual Therapy</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="robotic-spinal-decompression-therapy.html">Robotic Spinal &amp; Knee Decompression Therapy</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="Hydrotherapy.html">Hydrotherapy</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="massage-therapy.html">Massage Therapy</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="cupping-therapy.html">Cupping Therapy</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="yoga-therapy.html">Yoga Therapy</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="ph">Physiotherapy</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <!-- 5. Wellness Diagnostics -->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="wellness-diagnostics.html">Wellness Diagnostics</a>
+
+                                    <ul class="sub-menu">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="iris-diagnosis.html">Iris Diagnosis</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="pulse-diagnosis.html">Pulse Diagnosis</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <!-- 6. Institute -->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="institute.html">Institute</a>
+                                    <ul class="sub-menu">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#">N.K. Lakshiya Institute of Health Sciences</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <!-- 7. Laboratory & Pharmacy -->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="laboratory-pharmacy.html">
+      Laboratory & Pharmacy
+    </a>
+
+                                    <ul class="sub-menu">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="kaushik-clinical-laboratory.html">N.K. Kaushik Clinical Laboratory</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="pharmacy-name.html">Sri Sugam Homoeopathy Pharmacy</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <!-- 8. Testimonials -->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="testimonials.html">Testimonials</a>
+                                </li>
+
+                                <!-- 9. Gallery -->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Gallery</a>
+                                </li>
+
+                                <!-- 10. Contact Us -->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="contact.html">Contact Us</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Main Menu End -->
+                </nav>
+
+            </div>
+            <div class="navbar-toggle"></div>
+            <div class="responsive-menu"></div>
+        </div>
+    </header>
+    <!-- Header New End -->
+    <!-- Banner Section Start -->
+    <div class="sisf-banner position-relative">
+        <div class="banner-img">
+            <figure>
+                <img src="images/services_banner.png" alt="ChiroHeal">
+            </figure>
+        </div>
+        <div class="sisf-page-title sisf-m sisf-title--standard sisf-alignment--center">
+            <div class="sisf-m-inner">
+                <div class="sisf-m-content sisf-content-grid ">
+                    <h1 class="sisf-m-title entry-title">Advanced Robotic Spinal & Knee Decompression Therapy
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Banner Section End -->
+
+
+
+    <!-- floating bubbles (fixed) -->
+    <div class="bg">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
+
+    <section class="testimonials">
+        <h2 class="title">What Our Patients Say</h2>
+
+        <div class="slider">
+            <div class="slide-track">
+                <!-- ========== FIRST SET (5 cards) ========== -->
+                <!-- Review 1 -->
+                <div class="card">
+                    <div class="profile">
+                        <img src="images/logo/naveen.png" alt="Sarah Johnson">
+                        <div>
+                            <h4>Naveen Madavan</h4>
+                            <p>Client</p>
+                        </div>
+                    </div>
+                    <div class="stars">
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <p class="text">
+                        Came with ligament knee tear.. and meat Dr.Navasakthi sir and intial seven days there is no proper result but after 31 days sitting there is a visible growth and the treatment is done through acupuncture,verma and ozone therapy and result is seen and
+                        knee is well improved and I can walk without fear
+                    </p>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="card">
+                    <div class="profile">
+                        <img src="images/logo/subramani.png" alt="Michael Lee">
+                        <div>
+                            <h4>Subburaman K</h4>
+                            <p>Client</p>
+                        </div>
+                    </div>
+                    <div class="stars">
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <p class="text">
+                        I met Dr Navashakti almost 4 months ago, ever since acupuncture,iv therapy, varma, steam therapy, cup therapy and ozone therapies were helpful for my daughter's nerve complaint and disk bulge, and also mental health has improved tremendously. The homeopathy
+                        medicine worked out well more than the western medicine thanks to Dr.Kalaiarasi Mam.
+                    </p>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="card">
+                    <div class="profile">
+                        <img src="images/logo/dinesh.png" alt="Emily Davis">
+                        <div>
+                            <h4>Dhinesh punitharaj</h4>
+                            <p>Client</p>
+                        </div>
+                    </div>
+                    <div class="stars">
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <p class="text">
+                        I recently visited Holistic Wellness Caare Center for my mother's treatment related to knee pain and sleeplessness. We had a very positive experience, and I’m truly thankful to the Dr. Navashakthi who treated her.
+                    </p>
+                </div>
+
+                <!-- Review 4 -->
+                <div class="card">
+                    <div class="profile">
+                        <img src="images/logo/aksh.png" alt="Daniel Carter">
+                        <div>
+                            <h4>Aksh M</h4>
+                            <p>Client</p>
+                        </div>
+                    </div>
+                    <div class="stars">
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <p class="text">
+                        I met to Dr Navashakti almost a year ago, ever since acupuncture and iv therapy and ozone therapies my IBS , severe digestive issues and also mental health has improved tremendously. Somehow what they offer with the combinations of therapy’s seem to work
+                        like magic.
+                    </p>
+                </div>
+
+                <!-- Review 5 -->
+                <div class="card">
+                    <div class="profile">
+                        <img src="images/logo/sudha.png" alt="Olivia Brown">
+                        <div>
+                            <h4>Sudha Subramanian</h4>
+                            <p>Client</p>
+                        </div>
+                    </div>
+                    <div class="stars">
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <p class="text">
+                        I have knee pain for 6months .I meet Dr Navasakthi in holistic wellness caare center.then he advised to take acupuncture and ozone therapy. After taking treatment now totally reduced my knee joint pain. Thanks to dr Navasakthi and team
+                    </p>
+                </div>
+
+                <!-- ========== SECOND SET (duplicate, for seamless loop) ========== -->
+                <!-- Review 1 (duplicate) -->
+                <div class="card">
+                    <div class="profile">
+                        <img src="images/logo/chinnappa.png" alt="Sarah Johnson">
+                        <div>
+                            <h4>Chinnapa Chandran</h4>
+                            <p>Client</p>
+                        </div>
+                    </div>
+                    <div class="stars">
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <p class="text">
+                        I had maxillofacial jaw surgery 2 years before after surgery I was not able to taste the food and I was having pain all the time ... I consulted Dr. Navasakthi . He suggested me for acupuncture treatment now I can able to taste my food and my pain also
+                        reduces ... thanks to Dr Navasakthi.
+                    </p>
+                </div>
+
+                <!-- Review 2 (duplicate) -->
+                <div class="card">
+                    <div class="profile">
+                        <img src="images/logo/selva.png" alt="Michael Lee">
+                        <div>
+                            <h4>Selvendiran Jayaseelan</h4>
+                            <p>Client</p>
+                        </div>
+                    </div>
+                    <div class="stars">
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <p class="text">
+                        This is not a paid promotion. This is the honest review from my side. Since i have got disc bulge in my lower back due to the pain my body alignment was changed then starting i have consulted many Dr in pondy and chennai also i taken all the medicine
+                        and there is no results and final i came to know Dr.
+                    </p>
+                </div>
+
+                <!-- Review 3 (duplicate) -->
+                <div class="card">
+                    <div class="profile">
+                        <img src="images/logo/iyyappa.png" alt="Emily Davis">
+                        <div>
+                            <h4>
+                                Iyyappan</h4>
+                            <p>Client</p>
+                        </div>
+                    </div>
+                    <div class="stars">
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <p class="text">
+                        I have neck pain since 2 years, then i meat dr. Navasakthi at holistic wellness caare center, puducherry.... then he advised to take integrative medicine like acupuncture, ozone therapy, varma therapy for 21days.....After 21 days of treatment now i have
+                        no pain in my neck. Completely recovered. Thanks to Dr navasakthi and team 🙏
+                    </p>
+                </div>
+
+                <!-- Review 4 (duplicate) -->
+                <div class="card">
+                    <div class="profile">
+                        <img src="images/logo/radhika.png" alt="Daniel Carter">
+                        <div>
+                            <h4>radhiga kannan</h4>
+                            <p>Client</p>
+                        </div>
+                    </div>
+                    <div class="stars">
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <p class="text">
+                        Ive neck painsince five years. I met many doctors but i couldn't relieved from my neck pain then one of my friend advised to meet Dr. Navasakthi in holistic wellness care centre. He advised to take treatment for 21 days then i took the treatment as per
+                        doctor advice now I'm totally relieved from my pain. Thanks to Dr. Navasakthi and team
+                    </p>
+                </div>
+
+                <!-- Review 5 (duplicate) -->
+                <div class="card">
+                    <div class="profile">
+                        <img src="https://randomuser.me/api/portraits/women/22.jpg" alt="Olivia Brown">
+                        <div>
+                            <h4>Bright Bharani</h4>
+                            <p>Client</p>
+                        </div>
+                    </div>
+                    <div class="stars">
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <p class="text">
+                        Previous year December month i got ear drum rupute with hearing loss cause by incest bite i consulted so many ENT doctors not get solution for my problem ( Some doctors suggested surgery) after that feb month i went *Holistic wellness caare centre* by
+                        Google review i met Dr.Navashakthi sir ,He suggested hydrogen therapy with acupuncture treatment aswelless homeopathy medicine started 1st week itself i regains my hearing 👍
+                    </p>
+                </div>
+                <!-- end duplicate set -->
+            </div>
+            <!-- /slide-track -->
+        </div>
+        <!-- /slider -->
+    </section>
+
+    <!-- Services Section End -->
+    <!-- Footer Start -->
+    <footer class="main-footer">
+        <div id="sisf-page-footer-top-area-inner" class="footer-top-area-inner sisf-content-full-width">
+            <div class="container">
+                <div class="row  gallery-items page-gallery-box">
+                    <!-- Footer Gallery Start -->
+                    <div class="gallery-container">
+                        <div class="gallery-item single-center">
+                            <div class="wow fadeInUp">
+                                <a href="images/ft-gallery-1.png">
+                                    <figure>
+                                        <img src="images/ft-gallery-1.png" alt="ChiroHeal">
+                                    </figure>
+                                </a>
+                            </div>
+                        </div>
+                        <div class=" gallery-item single-center">
+                            <div class="wow fadeInUp mb-1">
+                                <a href="images/ft-gallery-2.png">
+                                    <figure>
+                                        <img src="images/ft-gallery-2.png" alt="ChiroHeal">
+                                    </figure>
+                                </a>
+                            </div>
+                        </div>
+                        <div class=" gallery-item single-center">
+                            <div class="wow fadeInUp mb-1">
+                                <a href="images/ft-gallery-3.png">
+                                    <figure>
+                                        <img src="images/ft-gallery-3.png" alt="ChiroHeal">
+                                    </figure>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="gallery-item single-center">
+                            <div class="wow fadeInUp">
+                                <a href="images/ft-gallery-4.png">
+                                    <figure>
+                                        <img src="images/ft-gallery-4.png" alt="ChiroHeal">
+                                    </figure>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="gallery-item single-center">
+                            <div class="wow fadeInUp">
+                                <a href="images/ft-gallery-5.png">
+                                    <figure>
+                                        <img src="images/ft-gallery-5.png" alt="ChiroHeal">
+                                    </figure>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Footer Gallery End -->
+                    <!-- Footer Subscribe Start -->
+
+                    <!-- Footer Subscribe End -->
+                </div>
+            </div>
+        </div>
+        <div class="sisf-page-footer-middle-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-12">
+                        <div class="footer-logo">
+                            <a class="logo" href="index.html">
+                                <img src="images/logo/logo-01.png" alt="Logo">
+
+                                <span class="logo-title">
+      <span class="main-title">Holistic Wellness</span><br>
+                                <span class="sub-titles">Caare Centre, Puducherry</span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="text">
+                            <p>Welcome to Chiro Heal, where your health and wellness come first. Our expert chiropractors are dedicated to providing personalized care.</p>
+                        </div>
+                        <!-- Footer Social Link Start -->
+                        <div class="footer-social-links">
+                            <ul>
+                                <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                                <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
+                            </ul>
+                        </div>
+                        <!-- Footer Social Link End -->
+                    </div>
+                    <div class="col-lg-3 col-12">
+                        <!-- Links Start -->
+                        <div class="footer-links">
+                            <h3>Useful Links</h3>
+                            <ul>
+                                <li><a href="shop.html">About</a></li>
+                                <li><a href="my-account.html">Integrated spine Care</a></li>
+                                <li><a href="cart.html">We Also Treat</a></li>
+                                <li><a href="checkout.html">Integrative Medicine & Therapies</a></li>
+                                <li><a href="wishlist.html">Wellness Diagnostics</a></li>
+                            </ul>
+                        </div>
+                        <!-- Links End -->
+                    </div>
+                    <div class="col-lg-2 col-12">
+                        <!-- Links Start -->
+                        <div class="footer-links">
+                            <!-- <h3>Links</h3> -->
+                            <ul>
+                                <li><a href="index.html">Institute</a></li>
+                                <li><a href="blogs.html">Laboratory & Pharmacy</a></li>
+                                <li><a href="our-services.html">Testimonials</a></li>
+                                <li><a href="lessons.html">Gallery</a></li>
+                                <li><a href="contact.html">Contact Us</a></li>
+                            </ul>
+                        </div>
+                        <!-- Links End -->
+                    </div>
+                    <div class="col-lg-3 col-12">
+                        <!-- Footer Contact Details Start -->
+                        <div class="footer-contact">
+                            <h3>Contact</h3>
+                            <div class="footer-contact-details">
+                                <!-- Footer Info Box Start -->
+                                <div class="footer-info-box">
+                                    <p>No. 13, Tamilselvi Street, Behind Jayaram Hotel, Kamaraj Nagar, Puducherry, India – 605011
+                                    </p>
+                                </div>
+                                <!-- Footer Info Box End -->
+                            </div>
+                            <p class="mt-3 mb-3">0413-2255445 📱 99448 75445 </p>
+                            <!-- <p class="mb-0">info@chiroheal.com</p> -->
+                        </div>
+                        <!-- Footer Contact Details End -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sisf-page-footer-bottom-area">
+            <div class="container">
+                <!-- Footer Copyright Section Start -->
+                <div class="footer-copyright">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6 col-md-6">
+                            <!-- Footer Copyright Start -->
+                            <div class="footer-copyright-text">
+                                <p>&copy; getit media. All Rights Reserved.</p>
+                            </div>
+                            <!-- Footer Copyright End -->
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <!-- Footer Privacy Link Start -->
+                            <div class="footer-privacy-policy">
+                                <ul>
+                                    <li><a href="#">Privacy Policy</a></li>
+                                </ul>
+                            </div>
+                            <!-- Footer Privacy Link End -->
+                        </div>
+                    </div>
+                </div>
+                <!-- Footer Copyright Section End -->
+            </div>
+        </div>
+    </footer>
+    <!-- Footer End -->
+    <!-- Jquery Library File -->
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <!-- Bootstrap js file -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Validator js file -->
+    <script src="js/validator.min.js"></script>
+    <!-- SlickNav js file -->
+    <script src="js/jquery.slicknav.js"></script>
+    <!-- Swiper js file -->
+    <script src="js/swiper-bundle.min.js"></script>
+    <!-- Counter js file -->
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <!-- Magnific js file -->
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <!-- SmoothScroll -->
+    <script src="js/SmoothScroll.js"></script>
+    <!-- Parallax js -->
+    <script src="js/parallaxie.js"></script>
+    <!-- MagicCursor js file -->
+    <script src="js/gsap.min.js"></script>
+    <!-- Text Effect js file -->
+    <script src="js/SplitText.js"></script>
+    <script src="js/ScrollTrigger.min.js"></script>
+    <!-- YTPlayer js File -->
+    <script src="js/jquery.mb.YTPlayer.min.js"></script>
+    <!-- Audio js File -->
+    <script src="js/plyr.js"></script>
+    <!-- Wow js file -->
+    <script src="js/wow.js"></script>
+    <!-- Main Custom js file -->
+    <script src="js/function.js"></script>
+
+
+    <!-- Main Custom js file -->
+    <script src="js/integrated-spine-care.js"></script>
+
+
+</body>
+
+</html>

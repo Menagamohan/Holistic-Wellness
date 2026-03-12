@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animated Counter Section</title>
+
+<style>
+/* ===== GLOBAL ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #0f172a;
+}
+
+/* ===== COUNTER AREA ===== */
+.counter__area {
+  padding: 120px 20px;
+}
+
+.counter__wrapper {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+/* ===== COUNTER ITEM ===== */
+.counter__item {
+  flex: 1 1 200px;
+  max-width: 220px;
+  text-align: center;
+  padding: 40px 20px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  transition: 0.6s ease;
+  opacity: 0;
+  transform: translateY(60px);
+}
+
+.counter__item.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.counter__item:hover {
+  transform: translateY(-12px) scale(1.05);
+  background: linear-gradient(135deg, #6366f1, #06b6d4);
+}
+
+/* ===== NUMBER STYLE ===== */
+.counter__number {
+  font-size: 48px;
+  font-weight: bold;
+  background: linear-gradient(90deg, #06b6d4, #6366f1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ===== TEXT ===== */
+.counter__item p {
+  margin-top: 12px;
+  font-size: 16px;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .counter__wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+</style>
+</head>
+<body>
+
+<section class="counter__area">
+  <div class="counter__wrapper">
+
+    <div class="counter__item">
+      <h2 class="counter__number" data-target="4500">0</h2>
+      <p>Projects <br>Completed</p>
+    </div>
+
+    <div class="counter__item">
+      <h2 class="counter__number" data-target="2000">0</h2>
+      <p>Happy <br>Customers</p>
+    </div>
+
+    <div class="counter__item">
+      <h2 class="counter__number" data-target="42">0</h2>
+      <p>Years <br>Experience</p>
+    </div>
+
+    <div class="counter__item">
+      <h2 class="counter__number" data-target="100">0</h2>
+      <p>Customer <br>Satisfaction %</p>
+    </div>
+
+    <div class="counter__item">
+      <h2 class="counter__number" data-target="5">0</h2>
+      <p>Star <br>Rating</p>
+    </div>
+
+  </div>
+</section>
+
+<script>
+// Select elements
+const counters = document.querySelectorAll('.counter__number');
+const items = document.querySelectorAll('.counter__item');
+const section = document.querySelector('.counter__area');
+
+let started = false;
+
+// Counter function
+function startCounter() {
+  counters.forEach(counter => {
+    const target = +counter.getAttribute('data-target');
+    let count = 0;
+    const duration = 2000; // total animation time (ms)
+    const stepTime = 16; // approx 60fps
+    const totalSteps = duration / stepTime;
+    const increment = target / totalSteps;
+
+    function updateCount() {
+      count += increment;
+
+      if (count < target) {
+        counter.innerText = Math.floor(count);
+        requestAnimationFrame(updateCount);
+      } else {
+        counter.innerText = target;
+      }
+    }
+
+    updateCount();
+  });
+}
+
+// Reveal + start animation
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !started) {
+
+      items.forEach((item, index) => {
+        setTimeout(() => {
+          item.classList.add('show');
+        }, index * 200);
+      });
+
+      startCounter();
+      started = true;
+    }
+  });
+}, { threshold: 0.3 });
+
+observer.observe(section);
+</script>
+
+</body>
+</html>
