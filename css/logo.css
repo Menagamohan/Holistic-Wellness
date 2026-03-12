@@ -1,0 +1,82 @@
+/* Logo Layout */
+
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  text-decoration: none;
+}
+
+/* Logo Image */
+.logo img {
+  height: 75px;
+  animation: logoFade 1s ease forwards;
+}
+
+/* Text Container */
+.logo-title {
+  line-height: 1.2;
+}
+
+/* BIG Bold Main Title */
+.main-title {
+  font-size: 28px;
+  font-weight: 800;
+  background: linear-gradient(90deg, #6a1b9a, #c2185b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 1px;
+  display: inline-block;
+  opacity: 0;
+  animation: slideIn 1s ease forwards;
+}
+
+/* Smaller Subtitle */
+.sub-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #444;
+  letter-spacing: 0.5px;
+  opacity: 0;
+  animation: slideIn 1s ease forwards;
+  animation-delay: 0.3s;
+}
+
+/* Animations */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes logoFade {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+/* footer  */
+.sub-titles {
+  font-size: 14px;
+  font-weight: 500;
+  color: #fffdfd;
+  letter-spacing: 0.5px;
+  opacity: 0;
+  animation: slideIn 1s ease forwards;
+  animation-delay: 0.3s;
+}
+
+/*  */
+
